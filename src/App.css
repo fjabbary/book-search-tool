@@ -1,0 +1,144 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.loading {
+  display: block;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  border: 5px solid #ccc;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border-top-color: #1ecd97;
+  border-left-color:  #1ecd97;
+  animation: spin 1s infinite ease-in;
+}
+
+@keyframes spin {
+  0% {
+      transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+      transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.d-flex {
+  display: flex;
+}
+
+.justify-content-between {
+  justify-content: center;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.v-center {
+  display: flex;
+  align-items: center;
+}
+
+.h-center {
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 1350px;
+}
+
+.mx-auto {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.header {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.header .sort-box {
+  margin-left: 30px;
+}
+
+@media (max-width: 420px) {
+  .header {
+    display: block;
+  }
+  .header .search-box {
+    padding: 0 20px;
+    display: flex;
+  }
+  
+  .header .search-box input {
+    flex-grow: 1;
+  }
+  
+  .header .sort-box {
+    display: flex;
+    padding: 0 20px;
+    margin-left: 0;
+    margin-top: 20px;
+  }
+
+  .header .sort-box select {
+    flex-grow: 1;
+  }
+}
+
+.book {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 10px 0;
+  border: 1px solid yellowgreen;
+  border-radius: 20px;
+}
+
+@media (max-width: 600px) {
+  .book {
+    border-radius: 0;
+  }
+}
+
+.book .book-title {
+  width: 45%;
+  padding: 0 2.5%;
+}
+
+.book .book-cover {
+  width: 20%;
+  max-width: 90px;
+  max-height: 128px;
+}
+
+.book .book-author {
+  width: 25%;
+  padding: 0 1% 0 2%;
+
+}
+
+.book .book-published-date {
+  width: 10%;
+  padding: 0 2% 0 1%;
+}
+
+input, select, button {
+  padding: 3px 7px;
+}
+
+button {
+  cursor: pointer;
+}
+
+label {
+  font-size: .85rem;
+}
