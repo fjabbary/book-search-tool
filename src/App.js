@@ -2,9 +2,11 @@ import './App.css';
 import { FetchDocs } from './utils'
 import { useState } from 'react'
 import Loading from './components/Loading'
+import Header from './components/Header'
 
 function App() {
   const [query, setQuery] = useState('')
+  const [queryResult, setQueryResult] = useState('')
   const [books, setBooks] = useState([])
   const [loading, setLoading] = useState(false)
   const [sortBy, setSortBy] = useState('title')
@@ -35,48 +37,61 @@ function App() {
         .sort((a, b) => a[sortBy] > b[sortBy] ? 1 : -1))
 
     setLoading(false)
+    setQueryResult(query)
+    setQuery("")
   }
 
   if (loading) return <Loading />
 
   return (
-    <div className="container mx-auto">
-      <div className="header h-center">
-        <div className="search-box">
-          <input
-            aria-label="search-query"
-            value={query}
-            onChange={e => setQuery(e.target.value)}
-            placeholder="Plase input the query"
-          />
-          <button type="button" onClick={searchBooks}>Search</button>
-        </div>
+    <div className="app">
+      <Header />
+      <div className="container mx-auto">
 
-        <div className="sort-box">
-          <label htmlFor="sortBy">Sort By &nbsp;</label>
-          <select
-            aria-label="sort-by"
-            id="sortBy"
-            onChange={(e) => sortByAttr(e.target.value)}
-            value={sortBy}
-          >
-            <option value="title">Title</option>
-            <option value="published_date">Published Date</option>
-          </select>
-        </div>
-      </div>
-
-      <div className="book-container" data-testid='books'>
-        {books.map((book, index) => (
-          <div className="book d-flex" key={index}>
-            <div className="book-title center"><h5>{book.title}</h5></div>
-            <div className="book-cover v-center">
-              <img src={book.cover} width="100%" alt="Cover" />
-            </div>
-            <div className="book-author center"><h5>{book.author}</h5></div>
-            <div className="book-published-date center"><h5>{book.published_date}</h5></div>
+        <div className="header h-center">
+          <div className="search-box">
+            <input
+              aria-label="search-query"
+              value={query}
+              onChange={e => setQuery(e.target.value)}
+              placeholder="Plase input the query"
+            />
+            <button type="button" onClick={searchBooks}>Search</button>
           </div>
-        ))}
+
+          <div className="sort-box">
+            <label htmlFor="sortBy">Sort By &nbsp;</label>
+            <select
+              aria-label="sort-by"
+              id="sortBy"
+              onChange={(e) => sortByAttr(e.target.value)}
+              value={sortBy}
+            >
+              <option value="title">Title</option>
+              <option value="published_date">Published Date</option>
+            </select>
+          </div>
+        </div>
+
+        <div className="book-container" data-testid='books'>
+          {books.length !== 0 ? <h1 className="results-text">Found ({books.length}) results for {queryResult}</h1> : ""}
+          <div className="book-list">
+            {books.map((book, index) => (
+              <div className="book d-flex" key={index}>
+                <div className="book-details">
+                  <p><strong>Title:</strong> {book.title}</p>
+                  <p><strong>Author:</strong> {book.title}</p>
+                  <p><strong>Published Date:</strong> {book.published_date}</p>
+                </div>
+                <div>
+                  <div className="book-cover">
+                    <img src={book.cover} width="100%" alt="Cover" />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
