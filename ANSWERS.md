@@ -16,7 +16,7 @@ What was the most useful feature that was added to the latest version of your ch
 
 In my latest project, I used redux as a state management for my application which is mandatory for medium to large application. Here is my github repo for that: https://github.com/fjabbary/OMDB-Movie-React-Redux
 
-How would you track down a performance issue in production? Have you ever had to do this? In my personal projects, I used tools to compress my code as well as images to minimiized the size and loading time. In enterprise level, I haven't done it.
+How would you track down a performance issue in production? Have you ever had to do this? In my personal projects, I used tools to compress my code as well as images to minimized the size and loading time. In enterprise level, I haven't done it.
 
 How would you improve the API that you just used? I found a some redundant data in this API that probably are not useful. 
 
