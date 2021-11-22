@@ -69,8 +69,8 @@ function App() {
               placeholder="Plase input the query"
               className={classnames({ 'error': errors.queryError })}
             />
-            <p className="text-error"><small>{errors.queryError}</small></p>
             <button type="button" onClick={searchBooks}>Search</button>
+            <p className="text-error"><small>{errors.queryError}</small></p>
           </div>
 
           <div className="sort-box">
